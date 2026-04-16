@@ -1,12 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .date {
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      color: #38bdf8;
+    }
+
+    p, li {
+      font-size: 0.95rem;
+      color: #cbd5f5;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .highlight {
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p>Last updated: [date]</p>
+  <div class="container">
+    <h1>[Your App Name]</h1>
+    <p class="date">Privacy Policy • Last updated: [Insert Date]</p>
 
-  <p>Your privacy policy text goes here...</p>
+    <h2>1. Introduction</h2>
+    <p>Welcome to [Your App Name]. Your privacy matters to us. This policy explains how we collect and use your data.</p>
+
+    <h2>2. Information We Collect</h2>
+    <ul>
+      <li>Email address</li>
+      <li>Age</li>
+      <li>Gender / Sex</li>
+      <li>Messages sent in the app</li>
+    </ul>
+
+    <h2>3. Location Information</h2>
+    <p>The app includes a selectable location option (e.g., Earth, Space, Orbit). <span class="highlight">This does not track your real-world location.</span></p>
+
+    <h2>4. How We Use Data</h2>
+    <ul>
+      <li>Create and manage accounts</li>
+      <li>Enable messaging</li>
+      <li>Improve user experience</li>
+    </ul>
+
+    <h2>5. Backend Services</h2>
+    <p>We use Supabase to securely store and manage data.</p>
+
+    <h2>6. Data Sharing</h2>
+    <p>We do not sell your data. Data may be shared only with service providers or if required by law.</p>
+
+    <h2>7. Security</h2>
+    <p>We take reasonable measures to protect your data, but no system is completely secure.</p>
+
+    <h2>8. Future Features</h2>
+    <p>Future updates may include real location tracking and premium features via in-app purchases.</p>
+
+    <h2>9. Your Rights</h2>
+    <p>You may request access or deletion of your data.</p>
+
+    <h2>10. Contact</h2>
+    <p>Contact us at: [Your Email]</p>
+
+    <footer>
+      © [Your App Name] • All rights reserved
+    </footer>
+  </div>
 </body>
 </html>
