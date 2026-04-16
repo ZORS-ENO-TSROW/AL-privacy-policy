@@ -3,130 +3,976 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Privacy Policy | [Your App Name]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-primary: #0a0f1c;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.8);
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-primary: #3b82f6;
+      --accent-secondary: #8b5cf6;
+      --accent-success: #10b981;
+      --accent-warning: #f59e0b;
+      --border-color: rgba(148, 163, 184, 0.1);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #e2e8f0;
-      line-height: 1.6;
-      padding: 40px 20px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
 
+    /* Animated background gradient */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(59, 130, 246, 0.3);
+      border-radius: 50%;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+    .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 30s; }
+    .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 22s; }
+    .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 28s; }
+    .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 24s; }
+    .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 26s; }
+    .particle:nth-child(7) { left: 70%; animation-delay: 2s; animation-duration: 32s; }
+    .particle:nth-child(8) { left: 80%; animation-delay: 4s; animation-duration: 20s; }
+    .particle:nth-child(9) { left: 90%; animation-delay: 1s; animation-duration: 27s; }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 15, 28, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 100;
+      padding: 1rem 0;
+    }
+
+    .nav-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    /* Main container */
     .container {
       max-width: 900px;
-      margin: auto;
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    /* Header section */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .header-icon svg {
+      width: 40px;
+      height: 40px;
+      color: white;
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 3rem;
       font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
     }
 
-    .date {
-      color: #94a3b8;
-      margin-bottom: 30px;
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .last-updated {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-success);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-top: 16px;
+    }
+
+    /* Table of contents */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 48px;
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 0.8s ease-out 0.1s both;
+    }
+
+    .toc-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toc-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 8px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .toc-item a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .toc-item a:hover {
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent-primary);
+      transform: translateX(4px);
+    }
+
+    .toc-number {
+      width: 24px;
+      height: 24px;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* Content sections */
+    .content {
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .section {
+      margin-bottom: 48px;
+      scroll-margin-top: 100px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-number {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
     }
 
     h2 {
-      margin-top: 30px;
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-      color: #38bdf8;
-    }
-
-    p, li {
-      font-size: 0.95rem;
-      color: #cbd5f5;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .highlight {
-      color: #22c55e;
+      font-size: 1.5rem;
       font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
     }
 
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #64748b;
+    .section-content {
+      padding-left: 64px;
     }
 
     @media (max-width: 600px) {
-      .container {
-        padding: 25px;
+      .section-content {
+        padding-left: 0;
       }
+    }
 
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 16px;
+    }
+
+    li {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      padding: 8px 0;
+      padding-left: 28px;
+      position: relative;
+    }
+
+    li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 50%;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .highlight-box svg {
+      width: 24px;
+      height: 24px;
+      color: var(--accent-success);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      color: var(--text-primary);
+    }
+
+    .highlight-box strong {
+      color: var(--accent-success);
+    }
+
+    /* Info cards */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .info-card-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .info-card-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--accent-primary);
+    }
+
+    .info-card-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .info-card-text {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Contact section */
+    .contact-section {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .contact-section h2 {
+      margin-bottom: 12px;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent-primary);
+      padding: 12px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-email:hover {
+      background: rgba(59, 130, 246, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border-color);
+      margin-top: 60px;
+    }
+
+    .footer-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .footer-text {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+      z-index: 99;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+    }
+
+    .back-to-top svg {
+      width: 24px;
+      height: 24px;
+      color: white;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      
+      body::before,
+      .particles,
+      .nav,
+      .back-to-top {
+        display: none;
+      }
+      
+      .container {
+        padding: 20px;
+      }
+      
+      .toc,
+      .info-card,
+      .contact-section,
+      .highlight-box {
+        border: 1px solid #ddd;
+        background: white;
+      }
+      
+      h1, h2 {
+        color: black;
+        -webkit-text-fill-color: black;
+      }
+      
+      p, li {
+        color: #333;
+      }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
       h1 {
         font-size: 2rem;
       }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .toc-list {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-header {
+        gap: 12px;
+      }
+      
+      .section-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+      
+      h2 {
+        font-size: 1.25rem;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      html {
+        scroll-behavior: auto;
+      }
     }
   </style>
+<base target="_blank">
 </head>
 <body>
-  <div class="container">
-    <h1>[Your App Name]</h1>
-    <p class="date">Privacy Policy • Last updated: [Insert Date]</p>
-
-    <h2>1. Introduction</h2>
-    <p>Welcome to [Your App Name]. Your privacy matters to us. This policy explains how we collect and use your data.</p>
-
-    <h2>2. Information We Collect</h2>
-    <ul>
-      <li>Email address</li>
-      <li>Age</li>
-      <li>Gender / Sex</li>
-      <li>Messages sent in the app</li>
-    </ul>
-
-    <h2>3. Location Information</h2>
-    <p>The app includes a selectable location option (e.g., Earth, Space, Orbit). <span class="highlight">This does not track your real-world location.</span></p>
-
-    <h2>4. How We Use Data</h2>
-    <ul>
-      <li>Create and manage accounts</li>
-      <li>Enable messaging</li>
-      <li>Improve user experience</li>
-    </ul>
-
-    <h2>5. Backend Services</h2>
-    <p>We use Supabase to securely store and manage data.</p>
-
-    <h2>6. Data Sharing</h2>
-    <p>We do not sell your data. Data may be shared only with service providers or if required by law.</p>
-
-    <h2>7. Security</h2>
-    <p>We take reasonable measures to protect your data, but no system is completely secure.</p>
-
-    <h2>8. Future Features</h2>
-    <p>Future updates may include real location tracking and premium features via in-app purchases.</p>
-
-    <h2>9. Your Rights</h2>
-    <p>You may request access or deletion of your data.</p>
-
-    <h2>10. Contact</h2>
-    <p>Contact us at: [Your Email]</p>
-
-    <footer>
-      © [Your App Name] • All rights reserved
-    </footer>
+  <!-- Floating particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-content">
+      <div class="nav-logo">[Your App Name]</div>
+      <div class="nav-links">
+        <a href="#introduction" class="nav-link">Introduction</a>
+        <a href="#data" class="nav-link">Data Collection</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        </svg>
+      </div>
+      <h1>Privacy Policy</h1>
+      <p class="subtitle">Your privacy is our priority</p>
+      <div class="last-updated">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Last updated: [Insert Date]
+      </div>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <div class="toc-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"/>
+          <line x1="8" y1="12" x2="21" y2="12"/>
+          <line x1="8" y1="18" x2="21" y2="18"/>
+          <line x1="3" y1="6" x2="3.01" y2="6"/>
+          <line x1="3" y1="12" x2="3.01" y2="12"/>
+          <line x1="3" y1="18" x2="3.01" y2="18"/>
+        </svg>
+        Table of Contents
+      </div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#introduction"><span class="toc-number">1</span>Introduction</a></li>
+        <li class="toc-item"><a href="#data"><span class="toc-number">2</span>Information We Collect</a></li>
+        <li class="toc-item"><a href="#location"><span class="toc-number">3</span>Location Information</a></li>
+        <li class="toc-item"><a href="#usage"><span class="toc-number">4</span>How We Use Data</a></li>
+        <li class="toc-item"><a href="#backend"><span class="toc-number">5</span>Backend Services</a></li>
+        <li class="toc-item"><a href="#sharing"><span class="toc-number">6</span>Data Sharing</a></li>
+        <li class="toc-item"><a href="#security"><span class="toc-number">7</span>Security</a></li>
+        <li class="toc-item"><a href="#future"><span class="toc-number">8</span>Future Features</a></li>
+        <li class="toc-item"><a href="#rights"><span class="toc-number">9</span>Your Rights</a></li>
+        <li class="toc-item"><a href="#contact"><span class="toc-number">10</span>Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Section 1 -->
+      <section id="introduction" class="section">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2>Introduction</h2>
+        </div>
+        <div class="section-content">
+          <p>Welcome to <strong>[Your App Name]</strong>. We are committed to protecting your privacy and ensuring transparency about how we handle your personal information. This Privacy Policy explains our data practices in clear, simple terms.</p>
+          <p>By using our application, you agree to the collection and use of information in accordance with this policy. We encourage you to read this document carefully to understand our approach to privacy.</p>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="data" class="section">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2>Information We Collect</h2>
+        </div>
+        <div class="section-content">
+          <p>We collect the following types of information to provide and improve our services:</p>
+          <ul>
+            <li><strong>Email address</strong> — For account creation and communication</li>
+            <li><strong>Age</strong> — To ensure age-appropriate content and compliance</li>
+            <li><strong>Gender / Sex</strong> — For personalization and demographic insights</li>
+            <li><strong>Messages</strong> — Content you send within the app to enable communication features</li>
+          </ul>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </div>
+              <div class="info-card-title">Account Data</div>
+              <p class="info-card-text">Email and profile information</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                </svg>
+              </div>
+              <div class="info-card-title">Messages</div>
+              <p class="info-card-text">In-app communication content</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                </svg>
+              </div>
+              <div class="info-card-title">Demographics</div>
+              <p class="info-card-text">Age and gender information</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="location" class="section">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2>Location Information</h2>
+        </div>
+        <div class="section-content">
+          <p>Our app includes a fun, selectable location feature that allows you to choose from options like Earth, Space, or Orbit. This is purely for entertainment and personalization purposes.</p>
+          <div class="highlight-box">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+            </svg>
+            <p><strong>Important:</strong> This feature does NOT track, store, or access your real-world geographical location. It is entirely optional and used only for in-app theming and fun personalization.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="usage" class="section">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2>How We Use Data</h2>
+        </div>
+        <div class="section-content">
+          <p>We use your information responsibly to deliver and enhance our services:</p>
+          <ul>
+            <li>Create and manage your user account securely</li>
+            <li>Enable messaging and communication features between users</li>
+            <li>Improve user experience through analytics and feedback</li>
+            <li>Send important updates and service notifications</li>
+            <li>Ensure platform security and prevent abuse</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="backend" class="section">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2>Backend Services</h2>
+        </div>
+        <div class="section-content">
+          <p>We partner with industry-leading service providers to ensure your data is handled securely:</p>
+          <div class="highlight-box">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <p>We use <strong>Supabase</strong> as our backend infrastructure. Supabase provides enterprise-grade security, encryption at rest and in transit, and complies with industry standards including SOC 2 and GDPR.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="sharing" class="section">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2>Data Sharing</h2>
+        </div>
+        <div class="section-content">
+          <p>We respect your privacy and limit data sharing:</p>
+          <ul>
+            <li><strong>We do not sell your personal data</strong> to third parties</li>
+            <li>Data may be shared with trusted service providers who assist in operating our platform</li>
+            <li>We may disclose information if required by law or to protect our rights</li>
+            <li>All third-party partners are bound by strict confidentiality agreements</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section id="security" class="section">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2>Security</h2>
+        </div>
+        <div class="section-content">
+          <p>We implement industry-standard security measures to protect your data:</p>
+          <ul>
+            <li>End-to-end encryption for sensitive communications</li>
+            <li>Regular security audits and vulnerability assessments</li>
+            <li>Secure authentication and access controls</li>
+            <li>Encrypted data storage with regular backups</li>
+          </ul>
+          <p>While we strive to use commercially acceptable means to protect your personal information, no method of transmission over the Internet or electronic storage is 100% secure. We continuously work to improve our security practices.</p>
+        </div>
+      </section>
+
+      <!-- Section 8 -->
+      <section id="future" class="section">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2>Future Features</h2>
+        </div>
+        <div class="section-content">
+          <p>We are constantly improving our app. Future updates may include:</p>
+          <ul>
+            <li>Real location tracking (with explicit permission)</li>
+            <li>Premium features via in-app purchases</li>
+            <li>Enhanced messaging capabilities</li>
+            <li>Additional personalization options</li>
+          </ul>
+          <p>Any new features that affect your privacy will be clearly communicated, and this policy will be updated accordingly.</p>
+        </div>
+      </section>
+
+      <!-- Section 9 -->
+      <section id="rights" class="section">
+        <div class="section-header">
+          <div class="section-number">9</div>
+          <h2>Your Rights</h2>
+        </div>
+        <div class="section-content">
+          <p>You have control over your personal data:</p>
+          <ul>
+            <li><strong>Access:</strong> Request a copy of your personal information</li>
+            <li><strong>Correction:</strong> Update or correct inaccurate data</li>
+            <li><strong>Deletion:</strong> Request deletion of your account and data</li>
+            <li><strong>Portability:</strong> Export your data in a usable format</li>
+            <li><strong>Opt-out:</strong> Control marketing communications</li>
+          </ul>
+          <p>To exercise any of these rights, please contact us using the information below.</p>
+        </div>
+      </section>
+
+      <!-- Section 10 -->
+      <section id="contact" class="section">
+        <div class="section-header">
+          <div class="section-number">10</div>
+          <h2>Contact</h2>
+        </div>
+        <div class="section-content">
+          <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please don't hesitate to reach out to us.</p>
+        </div>
+      </section>
+
+      <!-- Contact CTA -->
+      <div class="contact-section">
+        <h2>Questions About Your Privacy?</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 8px;">We're here to help and answer any questions you may have.</p>
+        <a href="mailto:[Your Email]" class="contact-email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          [Your Email]
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">[Your App Name]</div>
+    <p class="footer-text">© 2024 [Your App Name]. All rights reserved. Built with privacy in mind.</p>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+    </svg>
+  </button>
+
+  <script>
+    // Back to top button visibility
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
